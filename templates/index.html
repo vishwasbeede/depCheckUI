@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <title>Workflow Validator</title>
+</head>
+
+<body>
+    <h3>Tool used to Validate Workflows</h3>
+    <h4>Provide details in below form for validation </h4>
+    <div class="container" style="background-color: antiquewhite;margin-top: 50px;padding-top: 10px;padding-left: 10px;">
+        <form class="form" action="/v1/api/depCheck" method="get">
+            <div class="form-group">
+                <label for="wfn">Input workflow name:</label>
+                <input type="text" id="Workflowname" name="wfn" placeholder="Enter Workflow Name" required>
+            </div>
+            <div class="form-group">
+                <label for="src">Source:</label>
+                <input type="text" name="src" id="src" placeholder="Workflow Souce url" required>
+            </div>
+            <div class="form-group">
+                <label for="dst">Target:</label>
+                <input type="text" name="dst" id="dst" placeholder="Workflow Target url" required>
+            </div>
+            <div class="form-group">
+                <label for="stkn">Source Token info:</label>
+                <input type="text" name="stkn" id="stkn" placeholder="Workflow Souce TokenId" required>
+            </div>
+            <div class="form-group">
+                <label for="dtkn">Traget Token info:</label>
+                <input type="text" name="dtkn" id="dtkn" placeholder="Workflow Traget TokenId" required>
+            </div>
+            <div class="checkbox">
+                <label for="" class="radio-inline"> <input type="radio" name="dry" id="method1" checked> Verify the
+                    inputs</label>
+                <label for="" class="radio-inline"><input type="radio" name="dry" id="method2" value="off"> Validate
+                    Workflows</label>
+                <div class="form-additional" style="display: none;">
+                    <label class="checkbox"> <input type="checkbox" name='ada' value="on">Adapters </label>
+                    <label class="checkbox"> <input type="checkbox" name='app' value="on">Applications </label>
+                    <label class="checkbox"> <input type="checkbox" name='tra' value="on"> Transformations </label>
+                    <label class="checkbox"> <input type="checkbox" name='wfs' value="on"> Workflow names </label>
+                    <label class="checkbox"> <input type="checkbox" name='pbks' value="on"> Playbooks </label>
+                    <label class="checkbox"> <input type="checkbox" name='comp' value="on"> All </label>
+                </div>
+
+            </div>
+
+            <div class="buttom"> <button type="submit">Submit</button></div>
+        </form>
+    </div>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#method2").click(function () {
+                if ($("#method2")[0].checked) {
+                    $('.form-additional').css('display', 'block');
+                }
+            });
+            $("#method1").click(function () {
+                if ($("#method1")[0].checked) {
+                    $('.form-additional').css('display', 'none');
+                }
+            });
+        });
+
+    </script>
+</body>
+
+</html>

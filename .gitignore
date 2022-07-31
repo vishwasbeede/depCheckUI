@@ -1,0 +1,4 @@
+__py*
+node_modules
+.vscode
+dev
